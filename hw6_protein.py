@@ -17,7 +17,9 @@ Parameters: str
 Returns: str
 '''
 def readFile(filename):
-    return
+    open_=open(filename,"r").read().splitlines()
+    str_="".join(open_)
+    return str_
 
 
 '''
@@ -27,7 +29,22 @@ Parameters: str ; int
 Returns: list of strs
 '''
 def dnaToRna(dna, startIndex):
-    return
+    res=dna[startIndex:]
+    list_=[]
+    str_=""
+    ignore=["UAG", "UAA","UGA"]
+    for letter in range(len(res)):
+        if len(str_)!=3:
+            str_+=res[letter]
+        if len(str_)==3:
+            x= str_.replace("T","U")
+            if x in ignore:
+                list_.append(x)
+                return list_
+            else:
+                list_.append(x)
+                str_=""
+    return list_
 
 
 '''
